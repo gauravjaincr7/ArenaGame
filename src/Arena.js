@@ -11,6 +11,7 @@ class Arena {
         while (this.playerA.isAlive() && this.playerB.isAlive()) {
             this.fightRound();
         }
+        this.displayWinner();
     }
 
     fightRound() {
@@ -36,7 +37,13 @@ class Arena {
         console.log(`${attacker === this.playerA ? 'Player A' : 'Player B'} attacks ${defender === this.playerA ? 'Player A' : 'Player B'}: Attack Roll = ${attackRoll}, Defend Roll = ${defendRoll}, Damage = ${damageToDefender}, ${defender === this.playerA ? 'Player A\'s' : 'Player B\'s'} Health = ${defender.getHealth()}`);
     }
 
-
+    displayWinner() {
+        if (!this.playerA.isAlive()) {
+            console.log('Player B wins!');
+        } else if (!this.playerB.isAlive()) {
+            console.log('Player A wins!');
+        }
+    }
 }
 
 module.exports = Arena;
